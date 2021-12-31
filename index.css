@@ -381,11 +381,12 @@
       font-size: 40px;
       font-style: italic;
       font-weight: bold;
+      user-select: none;
   }
   .anh_nam_moi{
       text-align: center;
+      user-select: none;
   }
   .happy_new_year{
     padding-top: 200px;
-    user-select: none;
   }
