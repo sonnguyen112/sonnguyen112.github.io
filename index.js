@@ -284,7 +284,7 @@ const isRunning = (state=store.state) => !state.paused && !state.menuOpen;
 // Whether user has enabled sound.
 const soundEnabledSelector = (state=store.state) => state.soundEnabled;
 // Whether any sounds are allowed, taking into account multiple factors.
-const canPlaySoundSelector = (state=true) => isRunning(state) && soundEnabledSelector(state);
+const canPlaySoundSelector = (state=store.state) => isRunning(state) && soundEnabledSelector(state);
 // Convert quality to number.
 const qualitySelector = () => +store.state.config.quality;
 const shellNameSelector = () => store.state.config.shell;
@@ -445,14 +445,14 @@ store.subscribe(renderApp);
 function handleStateChange(state, prevState) {
 	const canPlaySound = canPlaySoundSelector(state);
 	const canPlaySoundPrev = canPlaySoundSelector(prevState);
-	
-	if (canPlaySound !== canPlaySoundPrev) {
-		if (canPlaySound) {
-			soundManager.resumeAll();
-		} else {
-			soundManager.pauseAll();
-		}
-	}
+	soundManager.resumeAll();
+	// if (canPlaySound !== canPlaySoundPrev) {
+	// 	if (canPlaySound) {
+	// 		soundManager.resumeAll();
+	// 	} else {
+	// 		soundManager.pauseAll();
+	// 	}
+	// }
 }
 
 store.subscribe(handleStateChange);
