@@ -387,4 +387,5 @@
   }
   .happy_new_year{
     padding-top: 200px;
+    user-select: none;
   }
