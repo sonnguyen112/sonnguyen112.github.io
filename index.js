@@ -443,9 +443,8 @@ store.subscribe(renderApp);
 
 // Perform side effects on state changes
 function handleStateChange(state, prevState) {
-	const canPlaySound = true
+	const canPlaySound = canPlaySoundSelector(state);
 	const canPlaySoundPrev = canPlaySoundSelector(prevState);
-	soundManager.resumeAll();
 	if (canPlaySound !== canPlaySoundPrev) {
 		if (canPlaySound) {
 			soundManager.resumeAll();
