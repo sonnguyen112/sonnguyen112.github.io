@@ -2291,3 +2291,5 @@ if (IS_HEADER) {
 		);
 	}, 0);
 }
+
+document.getElementById("sound_but").click()
