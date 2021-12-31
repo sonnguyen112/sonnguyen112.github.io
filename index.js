@@ -443,16 +443,16 @@ store.subscribe(renderApp);
 
 // Perform side effects on state changes
 function handleStateChange(state, prevState) {
-	const canPlaySound = canPlaySoundSelector(state);
+	const canPlaySound = true
 	const canPlaySoundPrev = canPlaySoundSelector(prevState);
 	soundManager.resumeAll();
-	// if (canPlaySound !== canPlaySoundPrev) {
-	// 	if (canPlaySound) {
-	// 		soundManager.resumeAll();
-	// 	} else {
-	// 		soundManager.pauseAll();
-	// 	}
-	// }
+	if (canPlaySound !== canPlaySoundPrev) {
+		if (canPlaySound) {
+			soundManager.resumeAll();
+		} else {
+			soundManager.pauseAll();
+		}
+	}
 }
 
 store.subscribe(handleStateChange);
